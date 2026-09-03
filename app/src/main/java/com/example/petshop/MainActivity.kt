@@ -13,14 +13,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.petshop.ui.theme.PetShopTheme
 
-val cat = Cat("Coco", 6)
 class MainActivity : ComponentActivity() {
+    val cat = Cat("Coco", 6)
+    val dog = Dog("Mochi", 6)
+    val scorpion = Scorpion("Stinger", 32)
+    val pets = mutableListOf<Pet>()
+    val pettablePets = mutableListOf<Pettable>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            pets.add(cat)
+            pets.add(dog)
+            pets.add(scorpion)
+
+            pettablePets.add(cat)
+            pettablePets.add(dog)
+            pettablePets.add(scorpion) //should error
             PetShopTheme {
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
